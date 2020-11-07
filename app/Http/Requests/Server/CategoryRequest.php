@@ -2,9 +2,10 @@
 
 namespace App\Http\Requests\Server;
 
+use App\Models\Category;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCategoryPost extends FormRequest
+class CategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,15 +24,28 @@ class StoreCategoryPost extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'bail|required|max:50',
-        ];
+        switch ($this->method()) {
+            case 'POST':
+                return [
+                    'name' => 'bail|required|unique:' . Category::class . ',name|max:50',
+                ];
+                break;
+            case 'PUT':
+                return [
+                    'name' => 'bail|required|unique:' . Category::class . ',name|max:50',
+                ];
+                break;
+            default:
+                return [];
+                break;
+        };
     }
 
     public function messages()
     {
         return [
             'name.required' => 'Vui lòng nhập vào tên menu',
+            'name.unique' => 'Tên menu vừa nhập đã tồn tại',
             'name.max' => 'Độ dài tên menu không quá 50 ký tự',
         ];
     }

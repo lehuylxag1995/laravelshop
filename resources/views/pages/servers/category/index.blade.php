@@ -12,8 +12,8 @@
                 <div class="col-sm-6 mx-auto mb-2 d-flex justify-content-end ">
                     <form action="{{ route('server.category.index') }}" method="GET" class="form-inline">
                         {{-- @csrf --}}
-                        <input class="form-control mr-sm-2" value="{{ $keyword ?? '' }}" name="searchString" type="search" placeholder="Tên menu"
-                            aria-label="Search">
+                        <input class="form-control mr-sm-2" value="{{ $keyword ?? '' }}" name="searchString" type="search"
+                            placeholder="Tên menu" aria-label="Search">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
                     </form>
                 </div>
@@ -43,12 +43,13 @@
                                         <td>{{ $category->name }}</td>
                                         <td>{{ $category->slug }}</td>
                                         <td>
-                                            <a href="#" class="btn btn-info btn-block"> <i class="far fa-edit"></i>
+                                            <a href="{{ route('server.category.edit', [$category]) }}"
+                                                class="btn btn-info btn-block"> <i class="far fa-edit"></i>
                                                 Sửa</a>
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-danger btn-block"><i
-                                                    class="far fa-trash-alt"></i> Xoá</button>
+                                            <a href="{{ route('server.category.destroy', [$category]) }}"
+                                                class="btn btn-danger btn-block"><i class="far fa-trash-alt"></i> Xoá</a>
                                         </td>
                                     </tr>
                                 @endforeach

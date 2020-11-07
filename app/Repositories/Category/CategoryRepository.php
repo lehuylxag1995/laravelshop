@@ -18,13 +18,30 @@ class CategoryRepository implements CategoryRepositoryInterface
         return $category->id;
     }
 
-    public function recursive($parent_id = 0, $text = '')
+    public function getInfoById(int $id)
+    {
+        return Category::findOrFail($id);
+    }
+
+    public function update(int $id, array $attributes = [])
+    {
+        $categoryInfo = $this->getInfoById($id);
+        $categoryInfo->name = $attributes['name'];
+        $categoryInfo->slug = Str::slug($attributes['name']);
+        $categoryInfo->parent_id = $attributes['parent_id'];
+        return $categoryInfo->save();
+    }
+
+    public function recursive(int $parent_id, int $root = 0, string $text = '')
     {
         $collectionCategory = Category::all();
         foreach ($collectionCategory as $index => $item) {
-            if ($item['parent_id'] == $parent_id) {
-                $this->htmlOptions .= '<option value="' . $item['id'] . '">' . $text . $item['name'] . '</option>';
-                $this->recursive($item['id'], $text . '---');
+            if ($item['parent_id'] == $root) {
+                if (!empty($parent_id) && $item['id'] == $parent_id)
+                    $this->htmlOptions .= '<option selected value="' . $item['id'] . '">' . $text . $item['name'] . '</option>';
+                else
+                    $this->htmlOptions .= '<option value="' . $item['id'] . '">' . $text . $item['name'] . '</option>';
+                $this->recursive($parent_id, $item['id'], $text . '---');
             }
         }
         return $this->htmlOptions;

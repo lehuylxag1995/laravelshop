@@ -11,8 +11,25 @@ interface CategoryRepositoryInterface
      * @return $ID of model
      */
     public function create(array $attributes = []);
-    // public function update();
+
+    /**
+     * Update model use Eloquent ORM
+     *
+     * @param array $attributes
+     * @return bool
+     */
+    public function update(int $id,array $attributes = []);
+
     // public function remove();
+
+
+    /**
+     * Get information of model by ID
+     *
+     * @param int $id
+     * @return model
+     */
+    public function getInfoById(int $id);
 
     /**
      * Create pagination and search for all elements category
@@ -26,5 +43,5 @@ interface CategoryRepositoryInterface
      *
      * @return string $htmlOptions
      */
-    public function recursive(int $parent_id = 0);
+    public function recursive(int $parent_id, int $root = 0, string $text = '');
 }

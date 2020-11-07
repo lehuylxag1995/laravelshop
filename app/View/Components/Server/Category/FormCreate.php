@@ -2,15 +2,14 @@
 
 namespace App\View\Components\Server\Category;
 
-use App\Repositories\Category\CategoryRepositoryInterface;
 use Illuminate\View\Component;
 
 class FormCreate extends Component
 {
-    public $categoryRepository;
-    public function __construct(CategoryRepositoryInterface $categoryRepository)
+    public $action = '';
+    public function __construct(string $action)
     {
-        $this->categoryRepository = $categoryRepository;
+        $this->action = $action;
     }
 
     /**
@@ -20,7 +19,6 @@ class FormCreate extends Component
      */
     public function render()
     {
-        $htmlOptions = $this->categoryRepository->recursive() ?? '';
-        return view('components.server.category.form-create', compact(['htmlOptions']));
+        return view('components.server.category.form-create');
     }
 }

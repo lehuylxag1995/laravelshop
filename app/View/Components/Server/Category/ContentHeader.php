@@ -28,6 +28,12 @@ class ContentHeader extends Component
                     'Thêm menu' => 'server.category.create'
                 ]);
                 break;
+            case 'server.category.edit':
+                return collect([
+                    'Danh sách menu' => 'server.category.index',
+                    'Sửa menu' => 'server.category.edit'
+                ]);
+                break;
             default:
                 return collect(['']);
                 break;

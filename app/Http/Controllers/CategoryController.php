@@ -118,6 +118,17 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $result = $this->CategoryRepository->remove($category->id);
+        if ($result) {
+            $this->type = 'primary';
+            $this->message = 'Xoá menu thành công';
+        } else {
+            $this->type = 'danger';
+            $this->message = 'Xoá menu thất bại';
+        }
+        return redirect()->route('server.category.index')->with([
+            'type' => $this->type,
+            'message' => $this->message
+        ]);
     }
 }

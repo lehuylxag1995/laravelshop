@@ -48,8 +48,13 @@
                                                 Sửa</a>
                                         </td>
                                         <td>
-                                            <a href="{{ route('server.category.destroy', [$category]) }}"
-                                                class="btn btn-danger btn-block"><i class="far fa-trash-alt"></i> Xoá</a>
+                                            <form action="{{ route('server.category.destroy', [$category]) }}"
+                                                method="post">
+                                                @method('delete')
+                                                @csrf
+                                                <button type="submit" class="btn btn-danger btn-block"><i
+                                                        class="far fa-trash-alt"></i> Xoá</button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach

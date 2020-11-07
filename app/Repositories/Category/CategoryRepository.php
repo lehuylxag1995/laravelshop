@@ -32,6 +32,12 @@ class CategoryRepository implements CategoryRepositoryInterface
         return $categoryInfo->save();
     }
 
+    public function remove(int $id)
+    {
+        $categoryInfo = $this->getInfoById($id);
+        return $categoryInfo->delete();
+    }
+
     public function recursive(int $parent_id, int $root = 0, string $text = '')
     {
         $collectionCategory = Category::all();

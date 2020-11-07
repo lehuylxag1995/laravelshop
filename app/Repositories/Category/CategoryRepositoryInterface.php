@@ -20,8 +20,13 @@ interface CategoryRepositoryInterface
      */
     public function update(int $id,array $attributes = []);
 
-    // public function remove();
-
+    /**
+     * Delete model by category model
+     *
+     * @param int $id
+     * @return bool
+     */
+    public function remove(int $id);
 
     /**
      * Get information of model by ID

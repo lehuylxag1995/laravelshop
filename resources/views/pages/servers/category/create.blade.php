@@ -4,16 +4,16 @@
 
 @section('content')
 
-    <x-server.category.contentheader route-name="{{ $routeName }}">
-    </x-server.category.contentheader>
+    <x-server.category.content-header route-name="{{ $routeName }}">
+    </x-server.category.content-header>
 
     <div class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    <x-server.category.formcreate action="{{ route('server.category.store') }}">
+                    <x-server.category.form-create action="{{ route('server.category.store') }}">
                         <x-slot name="optionsOfSelect">{!! $htmlOptions !!}</x-slot>
-                    </x-server.category.formcreate>
+                    </x-server.category.form-create>
                 </div>
             </div>
         </div>

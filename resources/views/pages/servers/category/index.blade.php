@@ -3,8 +3,8 @@
 @section('title', 'Danh sách menu')
 
 @section('content')
-    <x-server.category.contentheader route-name="{{ $routeName }}">
-    </x-server.category.contentheader>
+    <x-server.category.content-header route-name="{{ $routeName }}">
+    </x-server.category.content-header>
 
     <div class="content">
         <div class="container-fluid">

@@ -19,7 +19,6 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('admin')->name('server.')->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
-    // Route::get('category/{searchString?}', [CategoryController::class, 'index'])->name('category.index');
     Route::resource('category', CategoryController::class)->except('show');
 
 });

@@ -2,7 +2,7 @@
     {{ $methodToken ?? '' }}
     @csrf
     <div class="form-group">
-        <label for="name">Tên Menu:</label>
+        <label for="name">Tên thể loại:</label>
         <input value="{{ $nameCategory ?? old('name') }}" type="text"
             class="form-control @error('name') is-invalid @enderror" id="name" name="name"
             placeholder="Nhập tên danh mục menu">
@@ -11,9 +11,9 @@
         @enderror
     </div>
     <div class="form-group">
-        <label for="parent_id">Chọn menu cha:</label>
+        <label for="parent_id">Chọn thể loại cha:</label>
         <select class="custom-select" id="parent_id" name="parent_id">
-            <option value="0">- Mặc định là menu root -</option>
+            <option value="0">- Mặc định là thể loại gốc -</option>
             {{ $optionsOfSelect }}
         </select>
     </div>

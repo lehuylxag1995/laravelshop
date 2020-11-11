@@ -11,11 +11,11 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    <x-server.category.form action="{{ route('server.category.update', $category) }}">
+                    <x-server.menu.form action="{{ route('server.menu.update', $menu) }}">
                         <x-slot name="methodToken">@method('PUT')</x-slot>
-                        <x-slot name="nameCategory">{{ $category->name }}</x-slot>
-                        <x-slot name="optionsOfSelect">{!! $htmlOptions !!}</x-slot>
-                    </x-server.category.form>
+                        <x-slot name="nameValue">{{ $menu->name }}</x-slot>
+                        <x-slot name="optionsOfSelect">{!! $optionsOfSelect !!}</x-slot>
+                    </x-server.menu.form>
                 </div>
             </div>
         </div>

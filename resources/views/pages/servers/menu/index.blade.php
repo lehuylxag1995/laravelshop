@@ -10,8 +10,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6 mx-auto mb-2 d-flex justify-content-end ">
-                    <form action="{{ route('server.category.index') }}" method="GET" class="form-inline">
-                        {{-- @csrf --}}
+                    <form action="{{ route('server.menu.index') }}" method="GET" class="form-inline">
                         <input class="form-control mr-sm-2" value="{{ $keyword ?? '' }}" name="searchString" type="search"
                             placeholder="Tên menu" aria-label="Search">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
@@ -29,28 +28,27 @@
                             <thead>
                                 <tr>
                                     <th scope="col">ID</th>
-                                    <th scope="col">Tên thể loại</th>
+                                    <th scope="col">Tên menu</th>
                                     <th scope="col">Slug</th>
                                     <th colspan="2">
-                                        <a href="{{ route('server.category.create') }}" class="btn btn-success btn-block"><i
+                                        <a href="{{ route('server.menu.create') }}" class="btn btn-success btn-block"><i
                                                 class="fas fa-plus"></i> Add</a>
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($listCategories as $category)
+                                @foreach ($listMenu as $menu)
                                     <tr>
-                                        <th scope="row">{{ $category->id }}</th>
-                                        <td>{{ $category->name }}</td>
-                                        <td>{{ $category->slug }}</td>
+                                        <th scope="row">{{ $menu->id }}</th>
+                                        <td>{{ $menu->name }}</td>
+                                        <td>{{ $menu->slug }}</td>
                                         <td>
-                                            <a href="{{ route('server.category.edit', [$category]) }}"
+                                            <a href="{{ route('server.menu.edit', [$menu]) }}"
                                                 class="btn btn-info btn-block"> <i class="far fa-edit"></i>
                                                 Sửa</a>
                                         </td>
                                         <td>
-                                            <form action="{{ route('server.category.destroy', [$category]) }}"
-                                                method="post">
+                                            <form action="{{ route('server.menu.destroy', [$menu]) }}" method="post">
                                                 @method('delete')
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger btn-block"><i
@@ -63,7 +61,7 @@
                         </table>
                     </div>
                     <div class="d-flex justify-content-end">
-                        {{ $listCategories->withQueryString()->links() }}
+                        {{ $listMenu->withQueryString()->links() }}
                     </div>
                 </div>
             </div>

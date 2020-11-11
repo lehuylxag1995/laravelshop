@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Repositories\Category\CategoryRepositoryInterface;
 use App\Repositories\Category\CategoryRepository;
+use App\Repositories\Menu\MenuRepository;
+use App\Repositories\Menu\MenuRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -26,5 +28,6 @@ class RepositoryServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->app->bind(CategoryRepositoryInterface::class, CategoryRepository::class);
+        $this->app->bind(MenuRepositoryInterface::class, MenuRepository::class);
     }
 }

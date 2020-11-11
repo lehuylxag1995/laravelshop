@@ -35,6 +35,14 @@
                     <a href="{{ route('server.category.index') }}" class="nav-link">
                         <i class="nav-icon fab fa-apple"></i>
                         <p>
+                            Quản lý thể loại
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('server.menu.index') }}" class="nav-link">
+                        <i class="nav-icon fab fa-apple"></i>
+                        <p>
                             Quản lý menu
                         </p>
                     </a>

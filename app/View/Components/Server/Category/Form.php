@@ -4,7 +4,7 @@ namespace App\View\Components\Server\Category;
 
 use Illuminate\View\Component;
 
-class FormCreate extends Component
+class Form extends Component
 {
     public $action = '';
     public function __construct(string $action)
@@ -19,6 +19,6 @@ class FormCreate extends Component
      */
     public function render()
     {
-        return view('components.server.category.form-create');
+        return view('components.server.category.form');
     }
 }

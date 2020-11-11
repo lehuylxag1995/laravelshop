@@ -11,9 +11,11 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    <x-server.category.form action="{{ route('server.category.store') }}">
-                        <x-slot name="optionsOfSelect">{!! $htmlOptions !!}</x-slot>
-                    </x-server.category.form>
+                    <x-server.menu.form action="{{ route('server.menu.store') }}">
+                        <x-slot name="methodToken">@method('POST')</x-slot>
+                        <x-slot name="nameValue">{{ old('name') ?? '' }}</x-slot>
+                        <x-slot name="optionsOfSelect">{!! $optionsOfSelect !!}</x-slot>
+                    </x-server.menu.form>
                 </div>
             </div>
         </div>

@@ -10,6 +10,8 @@ class LoginController extends Controller
 {
     public function viewLogin()
     {
+        if (Auth::check())
+            return redirect()->route('server.dashboard.index');
         return view('pages.servers.authentication.login');
     }
     public function authentication(Request $request)

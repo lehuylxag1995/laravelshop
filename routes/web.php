@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MenuController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
@@ -21,6 +22,10 @@ use Illuminate\Support\Facades\URL;
 if (App::environment('production')) {
     URL::forceScheme('https');
 }
+
+//Login
+Route::get('/', [LoginController::class, 'viewLogin'])->name('server.login.view');
+Route::post('/auth', [LoginController::class, 'authentication'])->name('server.login.auth');
 
 // Back-End
 Route::prefix('admin')->name('server.')->group(function () {
